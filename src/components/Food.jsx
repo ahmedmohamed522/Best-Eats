@@ -5,6 +5,21 @@ import { data } from "../data/data";
 const Food = () => {
     const [foods, setFoods] = useState(data);
 
+    const filterCategory = (category) => {
+        setFoods(
+            data.filter((item) => {
+                if (category === "all") {
+                    return true;
+                } else {
+                    return item.category === category;
+                }
+            })
+        );
+    };
+    const filterPrice = (price) => {
+        setFoods(data.filter((item) => item.price === price));
+    };
+
     return (
         <div className="max-w-[1640px] m-auto px-4 py-12">
             <h1 className="text-orange-600 font-bold text-4xl text-center">Top Rated Menu Items</h1>
@@ -15,19 +30,44 @@ const Food = () => {
                 <div className="">
                     <p className="font-bold text-gray-700">Filter Tag</p>
                     <div className="flex justify-between flex-wrap gap-1">
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterCategory("all");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             All
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterCategory("burger");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             Burgers
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterCategory("pizza");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             Pizza
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterCategory("salad");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             Salads
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterCategory("chicken");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             Chicken
                         </button>
                     </div>
@@ -37,16 +77,36 @@ const Food = () => {
                 <div className="">
                     <p className="font-bold text-gray-700">Filter Price</p>
                     <div className="flex justify-between max-w-[390px] w-full gap-1">
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterPrice("$");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             $
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterPrice("$$");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             $$
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterPrice("$$$");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             $$$
                         </button>
-                        <button className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white">
+                        <button
+                            onClick={() => {
+                                filterPrice("$$$$");
+                            }}
+                            className="border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white"
+                        >
                             $$$$
                         </button>
                     </div>
